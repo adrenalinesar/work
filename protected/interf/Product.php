@@ -1,5 +1,7 @@
 <?php 
 
+namespace interf;
+
 interface Product {
     public function add();
     public function delete();

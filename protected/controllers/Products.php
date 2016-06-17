@@ -23,16 +23,22 @@ class Products extends Controller {
     }
 
     public function addAction(){
+
         if(isset($_POST['params']) && $_POST['params']){
             $params = $_POST['params'];
-            
+            $result = array();
+
             $product = ProductFactory::create($this->type, $params);
 
             if($product->add()){
-                FlashMessages::addMessage('Книга успешно добавлена', 'success');
+                //FlashMessages::addMessage('Книга успешно добавлена', 'success');
+                $result['status'] = 'ok';
             } else {
-                FlashMessages::addMessage('Ошибка!', 'error');
+                //FlashMessages::addMessage('Ошибка!', 'error');
+                $result['status'] = 'error';
             }
+            echo json_encode($result);
+            exit();
         }
         $this->render('Product/add.tpl');
     }

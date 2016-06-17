@@ -13,12 +13,20 @@ namespace core;
 
 class ProductFactory {
     public static function create($type, array $params){
-        $product = '\\' . ucfirst($type) . 'Product';
+        $product = 'products\\' . ucfirst($type) . 'Product';
 
-        if(class_exists($product)){
+        try{
             return new $product($params);
-        } else {
-            throw new \Exception('Ошибка создания объекта');
+        } catch(\Exception $e){
+            echo $e->getTraceAsString();
         }
+//        if(class_exists($product)){
+//            return new $product($params);
+//        } else {
+//            throw new \Exception('asd');
+//        }
+
     }
+    
+
 }

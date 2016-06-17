@@ -15,8 +15,8 @@ use core\FlashMessages;
 class Main extends Controller{
 
     public function indexAction(){
-        
-        $this->render('Main/index.tpl');
+
+        header('Location: /books/show');
     }
 
 }

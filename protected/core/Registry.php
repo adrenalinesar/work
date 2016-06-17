@@ -13,7 +13,7 @@ class Registry{
     
     public static function set($k, $v){
         if(!array_key_exists($k, self::$_registry)){
-            self::$_registry = $v;
+            self::$_registry[$k] = $v;
         }
     }
     

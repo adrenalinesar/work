@@ -26,14 +26,14 @@ class Books extends Model {
         return $this->fetchOne($q, $params);
     }
 
-    public function addBook($name, $author, $type, $length){
+    public function addBook($name, $author, $length, $type){
         $params = array();
         $params['name'] = $name;
         $params['author'] = $author;
         $params['type'] = $type;
-        $length['length'] = $length;
+        $params['length'] = $length;
 
-        $q = "insert into books ('name', 'author', 'length', 'type') values (:name, :author, :type, :length)";
+        $q = "insert into books ('name', 'author', 'length', 'type') values (:name, :author, :length, :type)";
         return $this->execute($q, $params);
     }
 }

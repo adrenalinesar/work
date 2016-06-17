@@ -21,11 +21,15 @@ class Db {
 
     }
 
+    /**
+     * @return \PDO
+     */
     public static function getInstance(){
         if (null === self::$_instance) {
             $values = Registry::get('config');
             $valuesDb = $values['db'];
             $connectionString = "sqlite:" . $valuesDb['path'] . DIRECTORY_SEPARATOR . $valuesDb['name'];
+            
             self::$_instance = new \PDO($connectionString);
             self::$_instance->query ( 'SET character_set_connection = utf-8' );
             self::$_instance->query ( 'SET character_set_client = utf-8' );

@@ -15,11 +15,11 @@ use models\Books as BookModel;
 class Books extends Controller{
 
     public function indexAction(){
-        header('Location: /books/show?type=books');
+        header('Location: /books/show');
     }
 
     public function showAction(){
-        if(isset($_GET['type'])){
+
             $book = new BookModel();
 
             if(isset($_GET['id'])){
@@ -34,6 +34,7 @@ class Books extends Controller{
             }
 
             $data = $book->getAllBooks();
+        
             if(!empty($data)){
                 $this->render('Books/show_all.tpl', array(
                     'books' => $data
@@ -41,7 +42,7 @@ class Books extends Controller{
 
             }
 
-        }
+
         $this->render('error.tpl');
     }
 }
